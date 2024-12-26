@@ -22,7 +22,7 @@ export const FontSize = {
   l: wp(4.1),
   xl: wp(4.6),
   xxl: wp(5.1),
-  xxxl: wp(5.6),
+  xxxl: wp(6.0),
 };
 
 export const color = {
@@ -30,5 +30,6 @@ export const color = {
   blue: '#4CBBFF',
   grey: '#9A9A9A',
   black: '#000000',
-  line: '#E2E2E2',
+  unSelectline: '#E2E2E2',
+ selectedLine:'#1AA8FF'
 };

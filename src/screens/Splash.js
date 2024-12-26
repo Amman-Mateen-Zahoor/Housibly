@@ -21,7 +21,9 @@ const Splash = () => {
     require('../assets/images/splash2.png'),
     require('../assets/images/splash3.png'),
   ];
-  const [index, SetIndex] = useState(0);
+
+  const[sliderScrollIndex,setSliderScrollIndex]=useState(0)
+ 
   return (
     <View style={styles.mainContainer}>
       <View>
@@ -30,7 +32,11 @@ const Splash = () => {
           pagingEnabled={true}
           contentContainerStyle={styles.mainImagesContainer}
           horizontal={true}
-          showsHorizontalScrollIndicator={false}>
+          showsHorizontalScrollIndicator={false}
+          onScroll={(e)=>{
+            setSliderScrollIndex(Math.round(e.nativeEvent.contentOffset.x/wp(100)))
+          }}
+          >
           {DataImages.map((item, index) => {
             return (
               <Image
@@ -49,9 +55,13 @@ const Splash = () => {
         </ScrollView>
       </View>
       <View style={styles.lineContainer}>
-        <Text style={styles.higlighttext}></Text>
-        <Text style={styles.unhiglighttext}></Text>
-        <Text style={styles.unhiglighttext}></Text>
+        {
+          new Array(3).fill(0).map((item,index)=>(<View 
+            key={index}
+            style={sliderScrollIndex === index ? styles.higlighttext :styles.unhiglighttext}/>
+))}
+        
+      
       </View>
       <View style={styles.bottomcontainer}>
         <Text style={styles.txt1btmcontainer}>
@@ -87,16 +97,16 @@ const styles = StyleSheet.create({
   },
   mainImagesContainerstyle: {},
   image1: {
-    height: wp(110),
+    height: wp(120),
     width: wp(100),
     borderBottomLeftRadius: wp(30),
   },
   image2: {
-    height: wp(110),
+    height: wp(120),
     width: wp(100),
   },
   image3: {
-    height: wp(110),
+    height: wp(120),
     width: wp(100),
     borderBottomRightRadius: wp(30),
   },
@@ -110,13 +120,13 @@ const styles = StyleSheet.create({
   },
 
   higlighttext: {
-    backgroundColor: 'blue',
+    backgroundColor: color.selectedLine,
     height: wp(2),
     width: wp(10),
     borderRadius: wp(1),
   },
   unhiglighttext: {
-    backgroundColor: color.line,
+    backgroundColor: color.unSelectline,
     height: wp(2),
     width: wp(10),
     borderRadius: wp(1),
