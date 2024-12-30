@@ -31,5 +31,6 @@ export const color = {
   grey: '#9A9A9A',
   black: '#000000',
   unSelectline: '#E2E2E2',
- selectedLine:'#1AA8FF'
+ selectedLine:'#1AA8FF',
+ borderColor:'#767676',
 };
