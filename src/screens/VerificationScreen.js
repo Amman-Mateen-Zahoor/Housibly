@@ -1,4 +1,4 @@
-import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useLayoutEffect, useState} from 'react';
 import {color, FontFamiy, FontSize} from '../constants/style';
 import {wp} from '../utils/utils';
@@ -10,9 +10,14 @@ import {
 } from 'react-native-confirmation-code-field';
 import CustomButton from '../components/CustomButton';
 
+
 const CELL_COUNT = 6;
 
 const VerificationScreen = () => {
+    useLayoutEffect(()=>{
+        StatusBar.setBackgroundColor(color.white)
+        StatusBar.setBarStyle('dark-content')
+    },[])
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -61,16 +66,15 @@ const VerificationScreen = () => {
       <Text style={styles.otpTxt}>
         Please enter your verification code sent to your email{'\n'}account
       </Text>
-      <CustomButton
-      title={'Verify Code'}
-      style={styles.btn}
-      />
+      <CustomButton title={'Verify Code'} style={styles.btn} />
       <View style={styles.bottomTxt}>
-        <Text>Didn’t recived a code?{' '}</Text>
-        <Pressable>
-            <Text style={{color:color.blue,textDecorationLine:'underline'}}>Resend</Text>
-        </Pressable>
-         </View>
+        <Text>Didn’t recived a code? </Text>
+        <TouchableOpacity>
+          <Text style={{color: color.blue, textDecorationLine: 'underline'}}>
+            Resend
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -122,6 +126,11 @@ const styles = StyleSheet.create({
     marginTop: wp(5),
     fontSize: FontSize.m,
   },
-  btn:{marginHorizontal:wp(3),marginTop:wp(35)},
-  bottomTxt:{flexDirection:'row',fontFamily:FontFamiy.gilroyRegular,alignSelf:'center',marginTop:wp(2)},
+  btn: {marginHorizontal: wp(3), marginTop: wp(35)},
+  bottomTxt: {
+    flexDirection: 'row',
+    fontFamily: FontFamiy.gilroyRegular,
+    alignSelf: 'center',
+    marginTop: wp(2),
+  },
 });
