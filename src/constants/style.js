@@ -33,4 +33,7 @@ export const color = {
   unSelectline: '#E2E2E2',
  selectedLine:'#1AA8FF',
  borderColor:'#767676',
+ palceholder:'#B3B3B3',
+ red:'#FF2C2C',
+ 
 };

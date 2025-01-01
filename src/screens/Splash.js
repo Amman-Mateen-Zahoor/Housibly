@@ -12,7 +12,7 @@ import {color, FontFamiy, FontSize} from '../constants/style';
 import {hp, wp} from '../utils/utils';
 import CustomButton from '../components/CustomButton';
 
-const Splash = () => {
+const Splash = ({navigation}) => {
   useLayoutEffect(() => {
     StatusBar.setHidden(true);
   }, []);
@@ -70,10 +70,12 @@ const Splash = () => {
         <Text style={styles.txt2btmcontainer}>
           Schedule your match in just a few clicks
         </Text>
-        <CustomButton title={'Get Started'} style={{marginTop: wp(15)}} />
+        <CustomButton title={'Get Started'} style={{marginTop: wp(15)}} onPress={()=>navigation.navigate('login')} />
         <View style={styles.bottomTextContainer}>
           <Text style={styles.bottomText}>If you have an account, </Text>
-          <Pressable>
+          <Pressable 
+        
+          > 
             <Text
               style={[{textDecorationLine: 'underline'}, styles.bottomText]}>
               Sign in
