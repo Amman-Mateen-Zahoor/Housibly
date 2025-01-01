@@ -4,11 +4,12 @@ import { color } from './src/constants/style'
 import Rootnavigation from './src/navigation/Rootnavigation'
 import Login from './src/screens/Login'
 import BannerPractice from './src/screens/BannerPractice'
+import FormikPractice from './src/screens/FormikPractice'
 
 
 const App = () => {
   return (
- <BannerPractice/>
+ <Rootnavigation/>
   )
 }
 

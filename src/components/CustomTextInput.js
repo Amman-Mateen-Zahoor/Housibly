@@ -1,5 +1,6 @@
 import {
   Image,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -7,10 +8,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {color, FontFamiy, FontSize} from '../constants/style';
 import {wp} from '../utils/utils';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 const CustomTextInput = ({
     title,
     secureTextEntry
@@ -22,6 +24,10 @@ const CustomTextInput = ({
     require('../assets/icons/eyeclose.png'),
     require('../assets/icons/eyeopen.png'),
   ];
+  const inputElement = useRef()
+  const focusInput =() =>{
+    inputElement.current.focus();
+  };
   return (
     <View
  >
@@ -29,13 +35,15 @@ const CustomTextInput = ({
         style={styles.label}>
         {title}
       </Text>
-      <View
-        style={styles.textinput}>
+      
+ <Pressable onPress={focusInput} style={styles.textinput}>
+  
         <TextInput
           placeholder="Start typing..."
           placeholderTextColor={color.palceholder}
           secureTextEntry={secureTextEntry && visiblePassword}
           style={{flex:1}}
+          ref={inputElement}
         />
         {secureTextEntry && (
           <TouchableOpacity
@@ -50,7 +58,10 @@ const CustomTextInput = ({
             />
           </TouchableOpacity>
         )}
-      </View>
+        
+      </Pressable>
+      
+     
     </View>
   );
 };
@@ -65,6 +76,7 @@ const styles = StyleSheet.create({
         marginBottom: wp(3),
       },
       textinput:{
+       
         flexDirection: 'row',
         backgroundColor: color.unSelectline,
         height: wp(14),
