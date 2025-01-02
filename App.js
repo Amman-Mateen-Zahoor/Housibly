@@ -1,12 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import FormikPractice from './src/screens/FormikPractice'
 
 const App = () => {
-  return (
-    <View>
-      <Text>App</Text>
-    </View>
-  )
+<FormikPractice/>
 }
 
 export default App

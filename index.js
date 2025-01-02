@@ -12,4 +12,4 @@ import TestScreen from './src/components/BannerPractice';
 import VerificationScreen from './src/screens/VerificationScreen';
 import Property from './src/components/Property';
 
-AppRegistry.registerComponent(appName, () => Property);
+AppRegistry.registerComponent(appName, () => App);
